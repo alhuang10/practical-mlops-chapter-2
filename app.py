@@ -11,6 +11,13 @@ def home():
 
 @app.route('/sentiment', methods=['POST'])
 def sentiment():
+    """
+    Example POST request
+    
+    curl -X POST https://sentiment-ml-service.azurewebsites.net/sentiment \
+        -H "Content-Type: application/x-www-form-urlencoded" \
+        -d "text=the soup was great"
+    """
     text = request.form.get('text')
     testimonial = TextBlob(text)
     sentiment_score_str = str(testimonial.polarity)
